@@ -3274,9 +3274,10 @@ class QubitInformationObject extends BaseInformationObject
 
     if ($includeRepoAndCountry)
     {
+      $separatorCHR = sfConfig::get('app_separator_character');
       if (isset($repository->identifier))
       {
-        $identifier = "$repository->identifier $identifier";
+        $identifier = "$repository->identifier$separatorCHR$identifier";
       }
 
       if (isset($repository))
@@ -3285,7 +3286,7 @@ class QubitInformationObject extends BaseInformationObject
 
         if (isset($countryCode))
         {
-          $identifier = "$countryCode $identifier";
+          $identifier = "$countryCode$separatorCHR$identifier";
         }
       }
     }
