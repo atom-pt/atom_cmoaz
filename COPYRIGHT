@@ -1,0 +1,210 @@
+COPYRIGHTS
+==========
+
+Access to Memory (AtoM)
+-----------------------
+Url:       https://www.accesstomemory.org/
+Copyright: 2006-2014, Artefactual Systems Inc. <info@artefactual.com>
+License:   Affero GPL version 3 or any later version - see LICENSE file
+
+Qubit Logo
+----------
+The blue circle in the logo is derived from a Blochsphere representation of a
+Qubit (quantum bit) that was made available as a vector graphic under a GNU
+Free Documentation License.  As such, the derived circle used in the logo is
+also made available under the GFDL.
+
+URL:       http://commons.wikimedia.org/wiki/Image:Blochsphere.svg
+Copyright: http://en.wikipedia.org/wiki/User:MuncherOfSpleens
+License:   GNU Free Documentation License
+
+symfony
+-------
+Access to Memory (AtoM) is based on the symfony framework
+
+Url:       http://www.symfony-project.org/
+Copyright: Fabien Potencier <fabien.potencier@symfony-project.com>
+License:   MIT - see vendor/symfony/LICENSE
+
+symfony contains additional software.  See vendor/symfony/COPYRIGHT and
+vendor/symfony/licenses
+
+Access to Memory (AtoM) also uses the following symfony plugins:
+
+sfLucenePlugin
+--------------
+Copyright: Carl Vondrick
+License:   MIT
+
+sfSearchPlugin
+--------------
+Copyright: Carl Vondrick
+License:   MIT
+
+sfThumbnailPlugin
+-----------------
+Copyright: Fabien Potencer
+License:   MIT
+
+sfWebBrowserPlugin
+--------------
+Copyright: Francois Zaninotto
+License:   MIT
+
+Access to Memory (AtoM) also uses:
+
+Drupal
+------
+Url:       http://drupal.org/
+Copyright: Original authors - see http://association.drupal.org/about/copyright
+License:   GPL version 2 - see LICENSE.txt file
+
+Flowplayer
+----------
+Url:       http://flowplayer.org/
+Copyright: Copyright (c) 2012 Flowplayer Ltd
+License:   GPL version 3
+
+FluentDOM
+---------
+Url:       http://fluentdom.org/
+Copyright: 2009-2011 Bastian Feder, Thomas Weinert
+License:   MIT - see licence.txt file
+
+FreeBeer ISO639 Map
+-------------------
+Url:       http://sourceforge.net/projects/freebeer/
+Copyright: 2002-2004, Ross Smith
+License:   BSD or LGPL
+
+ImageFlow
+---------
+Url:       http://imageflow.finnrudolph.de/
+Copyright: Finn Rudolph
+License:   Creative Commons Attribution-NonCommercial 3.0 Unported
+
+jQuery
+------
+Url:       http://jquery.com/
+Copyright: 2012 jQuery Foundation
+License:   Dual licensed under the MIT and GPL version 2 - see MIT-LICENSE.txt
+           and GPL-LICENSE.txt
+
+URI
+---
+Url:       http://medialize.github.io/URI.js/
+Copyright: Rodney Rehm
+License:   MIT and GPL v3
+
+jQuery miniColors Plugin
+------------------------
+Url:       http://labs.abeautifulsite.net/jquery-miniColors
+Copyright: 2012 Cory LaViska
+License:   Dual licensed under the MIT and GPL version 2
+
+jQuery Expander Plugin
+----------------------
+Url:       http://plugins.learningjquery.com/expander/
+Copyright: Karl Swedberg
+License:   MIT or GPL
+
+jQuery imagesLoaded
+-------------------
+Url:       http://desandro.github.com/imagesloaded/
+Copyright: Paul Irish et al.
+License:   MIT
+
+jQuery Masonry
+--------------
+Url:       http://masonry.desandro.com/
+Copyright: David DeSandro
+License:   MIT
+
+Silk Icons
+----------
+Url:       http://famfamfam.com/lab/icons/silk/
+Copyright: Mark James <mjames@gmail.com>
+License:   Creative Commons Attribution 2.5
+
+Font Awesome
+------------
+Url:       http://fortawesome.github.io/Font-Awesome
+Copyright: Dave Gandy <dave@davegandy.com>
+License:   SIL Open Font License
+
+Yahoo! User Interface Library
+-----------------------------
+Url:       http://developer.yahoo.com/yui/
+Copyright: Yahoo! Inc.
+License:   BSD
+
+Zend Framework
+--------------
+Access to Memory (AtoM) uses the Zend Search component
+
+Url:       http://framework.zend.com/
+Copyright: Zend Technologies USA Inc.
+License:   New BSD
+
+Elastica
+--------
+Used in plugins/arElasticSearchPlugin
+
+Url:       http://ruflin.github.com/Elastica/
+Copyright: Nicolas Ruflin <spam@ruflin.com>
+License:   Apache 2.0
+
+password_compat
+---------------
+Url: https://github.com/ircmaxell/password_compat
+Copyright: Anthony Ferrara 2012
+License: MIT
+
+printer-icon.png
+----------------
+Url: http://www.fatcow.com/free-icons
+Copyright: Fatcow Web Hosting
+License: CC Attribution 3.0
+
+Twitter Bootstrap
+-----------------
+Url: http://twitter.github.com/bootstrap/
+Copyright: Twitter, Inc.
+License: Apache 2.0
+
+Less CSS
+--------
+Url: http://lesscss.org/
+Copyright: Alexis Sellier 2010-2012
+License: Apache 2.0
+
+The last PDO library you will ever need
+--------
+Url: http://leftnode.com/entry/the-last-php-pdo-library-you-will-ever-need
+Copyright: Vic Cherubini
+License: Public domain? Code listed at Url above with statement that "You are
+         free to take it and use it for your projects"
+
+Basis for EAD to XSL FO transformations (ead-pdf.xsl)
+--------
+Url: https://github.com/archivesspace/archivesspace/blob/master/stylesheets/as-ead-pdf.xsl
+Copyright: Winona Salesky
+License: Educational Community License, Version 2.0
+
+saxon9he.jar
+--------
+Url: http://saxon.sourceforge.net/
+Copyright: Saxonica Limited
+License: Mozilla Public License version 1.0
+
+htmlpurifier
+------------
+Url: http://htmlpurifier.org/
+Copyright: Edward Z. Yang <ezyang@mit.edu>
+License: LGPLv2.1
+
+EasyRdf
+-------
+Url: http://www.easyrdf.org/
+Copyright: Nicholas Humfrey <nicholas.humfrey@bbc.co.uk>
+License: https://github.com/njh/easyrdf/blob/master/LICENSE.md
