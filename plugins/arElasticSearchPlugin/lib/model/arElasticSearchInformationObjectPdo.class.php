@@ -398,12 +398,12 @@ class arElasticSearchInformationObjectPdo
     {
       if (null != $cc = $this->repository->getCountryCode(array('culture' => $this->__get('culture'))))
       {
-        $refcode .= $cc.' ';
+        $refcode .= $cc.'/';
       }
 
       if (isset($this->repository->identifier))
       {
-        $refcode .= $this->repository->identifier.' ';
+        $refcode .= $this->repository->identifier.'/';
       }
     }
 
@@ -418,7 +418,7 @@ class arElasticSearchInformationObjectPdo
       }
     }
 
-    $refcode .= implode(sfConfig::get('app_separator_character', '-'), $identifiers);
+    $refcode .= implode(sfConfig::get('app_separator_character', '/'), $identifiers);
 
     return $refcode;
   }
