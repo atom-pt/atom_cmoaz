@@ -10,4 +10,4 @@ https://github.com/atom-pt/arMoaThemePlugin
 See COPYRIGHT and LICENSE for list of dependencies and associated licenses.
 
 ALERT!
-We don't recommend you to apply this code changes unless you are a Portuguese Archive Institution that needs to connect o the Portuguese National Archive Portal: https://portal.arquivos.pt/
+We don't recommend you to apply this code changes unless you are a Portuguese Archive Institution that needs to connect to the Portuguese National Archive Portal: https://portal.arquivos.pt/
