@@ -343,6 +343,6 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
       echo esc_specialchars(strval($item));
       echo "</dc:creator>";
     }
-?>
+?> 
 
 </oai_dc:dc>
