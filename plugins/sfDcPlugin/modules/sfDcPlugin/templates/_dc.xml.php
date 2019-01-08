@@ -73,19 +73,9 @@ echo ".";
 }
 ?></dc:subject>
 
-  <?php
-    if (!empty($resource->repository)) {
-      echo "<dc:publisher>";
-      echo esc_specialchars(strval($resource->repository->authorizedFormOfName));
-      echo "</dc:publisher>";
-    }
-    if (empty($resource->repository) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 9) == "PT/MOA/" or empty($resource->repository) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 8) == "PT MOA") {
-      echo "<dc:publisher>Câmara Municipal de Oliveira de Azeméis</dc:publisher>";
-    }
-    if (empty($resource->repository->authorizedFormOfName) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 9) == "PT/AMOA/" or empty($resource->repository->authorizedFormOfName) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 8) == "PT AMOA ") {
-      echo "<dc:publisher>Arquivo Municipal de Oliveira de Azeméis</dc:publisher>";
-    }
-  ?>
+<?php if ($value = $resource->getRepository(array('inherit' => true))): ?>
+<publisher><?php echo escape_dc(esc_specialchars($value->__toString())) ?></publisher>
+<?php endif; ?>
 
 <?php
     foreach ($resource->getDates() as $itema)
