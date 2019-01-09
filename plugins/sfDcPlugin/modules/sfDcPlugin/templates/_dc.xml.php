@@ -5,7 +5,49 @@
     xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/
     http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
 
-  <?php
+<?php
+
+/*
+ * This file is part of the Access to Memory (AtoM) software.
+ *
+ * Access to Memory (AtoM) is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Access to Memory (AtoM) is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Access to Memory (AtoM).  If not, see <http://www.gnu.org/licenses/>.
+ */
+/**
+ * Extended methods for compliance to the Portuguese National Portal of Archives, see <https://portal.arquivos.pt/>.
+ *
+ * @package AccesstoMemory
+ * @author Helder Gomes Silva <gomesxsilva@gmail.com>
+ * @author João Pereira <pereirabrothers@portugalmail.pt>
+ * @author Ricardo Pinho <ricardodepinho@gmail.com>
+ */
+/**
+Dublin Core elements output by the following order:
+<dc:title>
+<dc:subject>
+<dc:publisher>
+<dc:date>
+<dc:date>
+<dc:type>
+<dc:format>
+<dc:identifier>
+<dc:identifier>
+<dc:language>
+<dc:relation>
+<dc:rights>
+<dc:creator>
+*/
+ 
     foreach ($resource->getNotesByType(array(
       'noteTypeId' => QubitTerm::GENERAL_NOTE_ID
     )) as $notas)
@@ -74,7 +116,7 @@ echo ".";
 ?></dc:subject>
 
 <?php if ($value = $resource->getRepository(array('inherit' => true))): ?>
-<publisher><?php echo escape_dc(esc_specialchars($value->__toString())) ?></publisher>
+  <dc:publisher><?php echo esc_specialchars($value->__toString()) ?></dc:publisher>
 <?php endif; ?>
 
 <?php
