@@ -1,12 +1,4 @@
-<oai_dc:dc
-    xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/
-    http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-
 <?php
-
 /*
  * This file is part of the Access to Memory (AtoM) software.
  *
@@ -47,7 +39,17 @@ Dublin Core elements output by the following order:
 <dc:rights>
 <dc:creator>
 */
- 
+?>
+
+<oai_dc:dc
+    xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/
+    http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+
+ <?php
+
     foreach ($resource->getNotesByType(array(
       'noteTypeId' => QubitTerm::GENERAL_NOTE_ID
     )) as $notas)
@@ -79,8 +81,7 @@ Dublin Core elements output by the following order:
     }
   ?>
 
-  <dc:subject><?php
-
+<dc:subject><?php
 foreach ($dc->coverage as $locais)
  {
    }
@@ -116,7 +117,7 @@ echo ".";
 ?></dc:subject>
 
 <?php if ($value = $resource->getRepository(array('inherit' => true))): ?>
-  <dc:publisher><?php echo esc_specialchars($value->__toString()) ?></dc:publisher>
+  <dc:publisher><?php echo esc_specialchars(strval($value)) ?></dc:publisher>
 <?php endif; ?>
 
 <?php
@@ -363,9 +364,11 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     {
       echo "<dc:relation>https://raw.githubusercontent.com/artefactual/atom/stable/2.4.x/images/generic-icons/audio.png</dc:relation>";
     }
-  ?>
-
+?>
+    
+<?php if (!empty($resource->accessConditions)): ?>
   <dc:rights><?php echo esc_specialchars(strval($resource->accessConditions)) ?></dc:rights>
+<?php endif; ?>
 
 <?php
     foreach ($resource->getCreators() as $item) {
