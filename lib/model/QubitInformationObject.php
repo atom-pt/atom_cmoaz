@@ -3270,14 +3270,15 @@ class QubitInformationObject extends BaseInformationObject
       $item = $item->parent;
     }
 
-    $identifier = implode(sfConfig::get('app_separator_character', '-'), $identifier);
+    //$identifier = implode(sfConfig::get('app_separator_character', '-'), $identifier);
 
     if ($includeRepoAndCountry)
     {
       $separatorCHR = sfConfig::get('app_separator_character');
       if (isset($repository->identifier))
       {
-        $identifier = "$repository->identifier$separatorCHR$identifier";
+        //$identifier = "$repository->identifier$separatorCHR$identifier";
+        array_unshift($identifier,$repository->identifier);
       }
 
       if (isset($repository))
@@ -3286,10 +3287,12 @@ class QubitInformationObject extends BaseInformationObject
 
         if (isset($countryCode))
         {
-          $identifier = "$countryCode$separatorCHR$identifier";
+          //$identifier = "$countryCode$separatorCHR$identifier";
+          array_unshift($identifier,$countryCode);
         }
       }
     }
+    $identifier = implode(sfConfig::get('app_separator_character', '-'), $identifier);
 
     return $identifier;
   }
