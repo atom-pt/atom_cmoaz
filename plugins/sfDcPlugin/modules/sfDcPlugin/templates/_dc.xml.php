@@ -371,13 +371,19 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
 <?php endif; ?>
 
 <?php
-    foreach ($resource->getCreators() as $item) {
+   foreach ($resource->ancestors->andSelf()->orderBy('rgt') as $item) {
+    if (0 < count($item->getCreators())){
+      foreach ($item->getCreators() as $ancestor) {
+        if (!empty($ancestor)) {
+          echo "<dc:creator>";
+          echo esc_specialchars(strval($ancestor));
+          echo "</dc:creator>";
+          break;
+        }
+      }
+      break;
     }
-    if (!empty($item)) {
-      echo "<dc:creator>";
-      echo esc_specialchars(strval($item));
-      echo "</dc:creator>";
-    }
+  }
 ?> 
 
 </oai_dc:dc>
