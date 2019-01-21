@@ -337,7 +337,20 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
 
   <dc:identifier><?php echo esc_specialchars(strval($dc->identifier)) ?></dc:identifier>
 
-  <dc:language xsi:type="dcterms:ISO639-3"><?php foreach ($resource->language as $code) {} if (isset($code)) {echo esc_specialchars(strval(strtolower($iso639convertor->getID3($code)))); } else {echo "por";} ?></dc:language>
+<?php
+  foreach ($resource->ancestors->andSelf()->orderBy('rgt') as $ancestor) {
+    if (0 < count($ancestor->language)){
+    foreach ($ancestor->language as $code){
+      if (isset($code)) {
+        echo "<dc:language>";
+        echo esc_specialchars(strval(strtolower($iso639convertor->getID3($code))));
+        echo "</dc:language>";
+      }
+    }
+    break;
+    }
+  }
+?>
 
   <?php
     foreach ($resource->digitalObjects as $digitalObject)
