@@ -384,12 +384,12 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
 <?php endif; ?>
 
 <?php
-   foreach ($resource->ancestors->andSelf()->orderBy('rgt') as $item) {
-    if (0 < count($item->getCreators())){
-      foreach ($item->getCreators() as $ancestor) {
-        if (!empty($ancestor)) {
+   foreach ($resource->ancestors->andSelf()->orderBy('rgt') as $ancestor) {
+    if (0 < count($ancestor->getCreators())){
+      foreach ($ancestor->getCreators() as $creator) {
+        if (!empty($creator)) {
           echo "<dc:creator>";
-          echo esc_specialchars(strval($ancestor));
+          echo esc_specialchars(strval($creator));
           echo "</dc:creator>";
           break;
         }
