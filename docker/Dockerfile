@@ -25,11 +25,11 @@ RUN set -xe \
 			xsl \
 			zip \
 		# https://bugs.php.net/bug.php?id=70751
-		&& curl -Ls https://github.com/websupport-sk/pecl-memcache/archive/NON_BLOCKING_IO_php7.tar.gz | tar xz -C / \
-		&& cd /pecl-memcache-NON_BLOCKING_IO_php7 \
+		&& curl -Ls https://github.com/websupport-sk/pecl-memcache/tarball/4a9e4ab | tar xz -C / \
+		&& cd /websupport-sk-pecl-memcache-4a9e4ab \
 		&& phpize && ./configure && make && make install \
 		&& docker-php-ext-enable memcache \
-		&& rm -rf /pecl-memcache-NON_BLOCKING_IO_php7 \
+		&& rm -rf /websupport-sk-pecl-memcache-4a9e4ab \
 		&& apk add --virtual .phpext-rundeps \
 			gettext \
 			libmcrypt \
