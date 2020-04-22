@@ -26,18 +26,23 @@
 /**
 Dublin Core elements output by the following order:
 <dc:title>
-<dc:subject>
+<dc:creator>
+<dc:subject
+<dc:description>
 <dc:publisher>
+<dc:contributor>
+<dc:date>
 <dc:date>
 <dc:date>
 <dc:type>
 <dc:format>
 <dc:identifier>
 <dc:identifier>
+<dc:source>
 <dc:language>
 <dc:relation>
+<dc:coverage>
 <dc:rights>
-<dc:creator>
 */
 ?>
 
@@ -48,7 +53,9 @@ Dublin Core elements output by the following order:
     xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/
     http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
 
- <?php
+<?php /* element ref="dc:title" */?>
+
+<?php
 
     foreach ($resource->getNotesByType(array(
       'noteTypeId' => QubitTerm::GENERAL_NOTE_ID
@@ -79,7 +86,28 @@ Dublin Core elements output by the following order:
     {
       echo "<dc:title>" . esc_specialchars(strval($resource->title)) . "</dc:title>";
     }
-  ?>
+?>
+
+<?php /* element ref="dc:creator" */?>
+
+<?php
+   foreach ($resource->ancestors->andSelf()->orderBy('rgt') as $ancestor) {
+    if (0 < count($ancestor->getCreators())){
+      foreach ($ancestor->getCreators() as $creator) {
+        if (!empty($creator)) {
+          echo "<dc:creator>";
+          echo esc_specialchars(strval($creator));
+          echo "</dc:creator>";
+          break;
+        }
+      }
+      break;
+    }
+  }
+?>
+
+
+<?php /* element ref="dc:subject" */?>
 
 <dc:subject><?php
 foreach ($dc->coverage as $locais)
@@ -116,9 +144,28 @@ echo ".";
 }
 ?></dc:subject>
 
+
+<?php /* element ref="dc:description" */?>
+
+  <?php if (!empty($resource->scopeAndContent)): ?>
+    <dc:description><?php echo esc_specialchars(strval($resource->scopeAndContent)) ?></dc:description>
+  <?php endif; ?>
+  
+
+<?php /* element ref="dc:publisher" */?>
+
 <?php if ($value = $resource->getRepository(array('inherit' => true))): ?>
   <dc:publisher><?php echo esc_specialchars(strval($value)) ?></dc:publisher>
 <?php endif; ?>
+
+
+<?php /* element ref="dc:contributor" */?>
+
+  <?php foreach ($resource->getContributors() as $item): ?>
+    <dc:contributor><?php echo esc_specialchars(strval($item)) ?></dc:contributor>
+  <?php endforeach; ?>
+
+<?php /* element ref="dc:date" */?>
 
 <?php
     foreach ($resource->getDates() as $itema)
@@ -152,6 +199,8 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     }
   ?>
 
+<?php /* element ref="dc:date" */?>  
+
   <?php
     foreach ($resource->getDates() as $itemb)
     {
@@ -183,6 +232,8 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
       }
     }
   ?>
+
+<?php /* element ref="dc:date" */?>
 
   <?php
     foreach ($dc->date as $item1)
@@ -243,6 +294,8 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     }
   ?>
 
+<?php /* element ref="dc:date" */?>
+
   <?php
     foreach ($dc->date as $item1)
     {
@@ -272,6 +325,8 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
       echo "<dc:date>" . esc_specialchars(strval($item1)) . "</dc:date>";
     }
   ?>
+
+<?php /* element ref="dc:type" */?>
 
   <?php
     if (isset($resource->levelOfDescription))
@@ -321,9 +376,13 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     }
   ?>
 
+<?php /* element ref="dc:format" */?>
+  
   <dc:format><?php echo esc_specialchars(strval($resource->extentAndMedium)) ?></dc:format>
 
-  <dc:identifier><?php
+<?php /* element ref="dc:identifier" */?>
+  
+<dc:identifier><?php
     if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on")
     {
       echo "https://";
@@ -335,7 +394,19 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     echo esc_specialchars($sf_request->getHost() . $sf_request->getRelativeUrlRoot() . '/' . $resource->slug);
 ?></dc:identifier>
 
-  <dc:identifier><?php echo esc_specialchars(strval($dc->identifier)) ?></dc:identifier>
+
+<?php /* element ref="dc:identifier" */?>
+
+<dc:identifier><?php echo esc_specialchars(strval($dc->identifier)) ?></dc:identifier>
+
+
+<?php /* element ref="dc:source" */?>
+
+  <?php if (!empty($resource->locationOfOriginals)): ?>
+    <dc:source><?php echo esc_specialchars(strval($resource->locationOfOriginals)) ?></dc:source>
+  <?php endif; ?>
+
+<?php /* element ref="dc:language" */?>
 
 <?php
   foreach ($resource->ancestors->andSelf()->orderBy('rgt') as $ancestor) {
@@ -352,7 +423,9 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
   }
 ?>
 
-  <?php
+<?php /* element ref="dc:relation" */?>
+
+<?php
     foreach ($resource->digitalObjects as $digitalObject)
     {
       foreach ($dc->type as $registosonoro)
@@ -378,25 +451,19 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
       echo "<dc:relation>https://raw.githubusercontent.com/artefactual/atom/stable/2.4.x/images/generic-icons/audio.png</dc:relation>";
     }
 ?>
-    
+
+
+<?php /* element ref="dc:coverage" */?>
+
+  <?php foreach ($dc->coverage as $item): ?>
+    <dc:coverage><?php echo esc_specialchars(strval($item)) ?></dc:coverage>
+  <?php endforeach; ?>
+
+  
+<?php /* element ref="dc:rights" */?>
+  
 <?php if (!empty($resource->accessConditions)): ?>
   <dc:rights><?php echo esc_specialchars(strval($resource->accessConditions)) ?></dc:rights>
 <?php endif; ?>
-
-<?php
-   foreach ($resource->ancestors->andSelf()->orderBy('rgt') as $ancestor) {
-    if (0 < count($ancestor->getCreators())){
-      foreach ($ancestor->getCreators() as $creator) {
-        if (!empty($creator)) {
-          echo "<dc:creator>";
-          echo esc_specialchars(strval($creator));
-          echo "</dc:creator>";
-          break;
-        }
-      }
-      break;
-    }
-  }
-?> 
-
+ 
 </oai_dc:dc>
